@@ -1,4 +1,13 @@
 # Specify files that shouldn't be modified by Fern
 .github/workflows/auto-close-empty-prs.yml
+.github/workflows/ci.yml
 LICENSE
 
+src/main/java/com/pipedream/api/AsyncBaseClient.java
+src/main/java/com/pipedream/api/AsyncBaseClientBuilder.java
+src/main/java/com/pipedream/api/BaseClient.java
+src/main/java/com/pipedream/api/BaseClientBuilder.java
+src/main/java/com/pipedream/api/PipedreamClient.java
+src/main/java/com/pipedream/api/PipedreamClientBuilder.java
+src/main/java/com/pipedream/api/AsyncPipedreamClient.java
+src/main/java/com/pipedream/api/AsyncPipedreamClientBuilder.java
