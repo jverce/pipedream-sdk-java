@@ -10,7 +10,7 @@ import com.pipedream.api.resources.oauthtokens.OauthTokensClient;
 import java.util.Optional;
 import okhttp3.OkHttpClient;
 
-public class BaseClientBuilder {
+public class BaseClientBuilder<T extends BaseClientBuilder<T>> {
     private Optional<Integer> timeout = Optional.empty();
 
     private Optional<Integer> maxRetries = Optional.empty();
@@ -29,65 +29,68 @@ public class BaseClientBuilder {
      * Sets clientId.
      * Defaults to the PIPEDREAM_CLIENT_ID environment variable.
      */
-    public BaseClientBuilder clientId(String clientId) {
+    @SuppressWarnings("unchecked")
+    public T clientId(String clientId) {
         this.clientId = clientId;
-        return this;
+        return (T) this;
     }
 
     /**
      * Sets clientSecret.
      * Defaults to the PIPEDREAM_CLIENT_SECRET environment variable.
      */
-    public BaseClientBuilder clientSecret(String clientSecret) {
+    @SuppressWarnings("unchecked")
+    public T clientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
-        return this;
+        return (T) this;
     }
 
     /**
      * Sets projectEnvironment
      */
-    public BaseClientBuilder projectEnvironment(String projectEnvironment) {
+    @SuppressWarnings("unchecked")
+    public T projectEnvironment(String projectEnvironment) {
         this.projectEnvironment = projectEnvironment;
-        return this;
+        return (T) this;
     }
 
-    public BaseClientBuilder environment(Environment environment) {
+    @SuppressWarnings("unchecked")
+    public T environment(Environment environment) {
         this.environment = environment;
-        return this;
+        return (T) this;
     }
 
-    public BaseClientBuilder url(String url) {
+    @SuppressWarnings("unchecked")
+    public T url(String url) {
         this.environment = Environment.custom(url);
-        return this;
+        return (T) this;
     }
 
     /**
      * Sets the timeout (in seconds) for the client. Defaults to 60 seconds.
      */
-    public BaseClientBuilder timeout(int timeout) {
+    @SuppressWarnings("unchecked")
+    public T timeout(int timeout) {
         this.timeout = Optional.of(timeout);
-        return this;
+        return (T) this;
     }
 
     /**
      * Sets the maximum number of retries for the client. Defaults to 2 retries.
      */
-    public BaseClientBuilder maxRetries(int maxRetries) {
+    @SuppressWarnings("unchecked")
+    public T maxRetries(int maxRetries) {
         this.maxRetries = Optional.of(maxRetries);
-        return this;
+        return (T) this;
     }
 
     /**
      * Sets the underlying OkHttp client
      */
-    public BaseClientBuilder httpClient(OkHttpClient httpClient) {
+    @SuppressWarnings("unchecked")
+    public T httpClient(OkHttpClient httpClient) {
         this.httpClient = httpClient;
-        return this;
-    }
-
-    public BaseClientBuilder projectId(String projectId) {
-        clientOptionsBuilder.projectId(projectId);
-        return this;
+        return (T) this;
     }
 
     protected ClientOptions buildClientOptions() {
