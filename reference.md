@@ -2837,6 +2837,205 @@ client.tokens().validate(
 </dl>
 </details>
 
+## Workflows
+<details><summary><code>client.workflows.invoke(urlOrEndpoint) -> Object</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```java
+// Simple workflow invocation (uses OAuth authentication by default)
+client.workflows().invoke("eo3xxxx");
+
+// Advanced workflow invocation with all options
+client.workflows().invoke(
+    InvokeWorkflowOpts
+        .builder()
+        .urlOrEndpoint("https://eo3xxxx.m.pipedream.net")
+        .body(
+            new HashMap<String, Object>() {{
+                put("name", "John Doe");
+                put("email", "john@example.com");
+            }}
+        )
+        .headers(
+            new HashMap<String, String>() {{
+                put("Content-Type", "application/json");
+                put("Authorization", "Bearer your-token"); // For STATIC_BEARER auth
+            }}
+        )
+        .method("POST")
+        .authType(HTTPAuthType.STATIC_BEARER)
+        .build()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**urlOrEndpoint:** `String` — Either a workflow endpoint ID (e.g., 'eo3xxxx') or a full workflow URL
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**body:** `Optional<Object>` — Request body to send to the workflow (will be JSON serialized)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**headers:** `Optional<Map<String, String>>` — Additional headers to include in the request
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**method:** `Optional<String>` — HTTP method to use (defaults to 'POST')
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**authType:** `Optional<HTTPAuthType>` — Authentication type: OAUTH (default), STATIC_BEARER, or NONE
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.workflows.invokeForExternalUser(urlOrEndpoint, externalUserId) -> Object</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```java
+// Simple external user invocation (uses OAuth authentication by default)
+client.workflows().invokeForExternalUser("eo3xxxx", "user123");
+
+// Advanced external user invocation with all options
+client.workflows().invokeForExternalUser(
+    InvokeWorkflowForExternalUserOpts
+        .builder()
+        .url("https://eo3xxxx.m.pipedream.net")
+        .externalUserId("user123")
+        .body(
+            new HashMap<String, Object>() {{
+                put("action", "process_data");
+                put("data", Arrays.asList("item1", "item2"));
+            }}
+        )
+        .headers(
+            new HashMap<String, String>() {{
+                put("X-Custom-Header", "value");
+            }}
+        )
+        .method("POST")
+        .authType(HTTPAuthType.OAUTH)
+        .build()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**url:** `String` — The full workflow URL to invoke
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**externalUserId:** `String` — The external user ID for Pipedream Connect authentication
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**body:** `Optional<Object>` — Request body to send to the workflow (will be JSON serialized)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**headers:** `Optional<Map<String, String>>` — Additional headers to include in the request
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**method:** `Optional<String>` — HTTP method to use (defaults to 'POST')
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**authType:** `Optional<HTTPAuthType>` — Authentication type: OAUTH (default), STATIC_BEARER, or NONE
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## OauthTokens
 <details><summary><code>client.oauthTokens.create(request) -> CreateOAuthTokenResponse</code></summary>
 <dl>

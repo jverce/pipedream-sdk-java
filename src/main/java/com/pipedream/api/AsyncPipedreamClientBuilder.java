@@ -33,9 +33,7 @@ public final class AsyncPipedreamClientBuilder extends AsyncBaseClientBuilder<As
     }
 
     private static String patchUrl(final String templateUrl) {
-        StringSubstitutor sub = new StringSubstitutor(
-            StringLookupFactory.INSTANCE.environmentVariableStringLookup()
-        );
+        StringSubstitutor sub = new StringSubstitutor(StringLookupFactory.INSTANCE.environmentVariableStringLookup());
 
         return sub.replace(templateUrl);
     }

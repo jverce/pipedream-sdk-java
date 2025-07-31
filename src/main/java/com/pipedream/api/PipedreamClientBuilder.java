@@ -33,9 +33,7 @@ public final class PipedreamClientBuilder extends BaseClientBuilder<PipedreamCli
     }
 
     private static String patchUrl(final String templateUrl) {
-        StringSubstitutor sub = new StringSubstitutor(
-            StringLookupFactory.INSTANCE.environmentVariableStringLookup()
-        );
+        StringSubstitutor sub = new StringSubstitutor(StringLookupFactory.INSTANCE.environmentVariableStringLookup());
 
         return sub.replace(templateUrl);
     }

@@ -2,9 +2,8 @@ package com.pipedream.api;
 
 import com.pipedream.api.core.ClientOptions;
 import com.pipedream.api.core.Environment;
-import org.immutables.value.Value;
-
 import java.util.Optional;
+import org.immutables.value.Value;
 
 @Value
 public class PipedreamClient extends BaseClient {
@@ -19,7 +18,6 @@ public class PipedreamClient extends BaseClient {
                 .environment(Environment.PROD)
                 .projectEnvironment(System.getenv("PIPEDREAM_PROJECT_ENVIRONMENT"))
                 .projectId(System.getenv("PIPEDREAM_PROJECT_ID"));
-
     }
 
     /**
@@ -28,15 +26,11 @@ public class PipedreamClient extends BaseClient {
      * @return the access token string (if available)
      */
     public Optional<String> rawAccessToken() {
-        final String authorizationHeader = this.clientOptions
-                .headers(null)
-                .get("Authorization");
+        final String authorizationHeader = this.clientOptions.headers(null).get("Authorization");
 
         // The header might not be defined, so we wrap it as an Optional to
         // further process it. The processing consists of removing the `Bearer`
         // or `Basic` prefix from the header value.
-        return Optional
-                .ofNullable(authorizationHeader)
-                .map(h -> h.replaceFirst("^.*?\\s+", ""));
+        return Optional.ofNullable(authorizationHeader).map(h -> h.replaceFirst("^.*?\\s+", ""));
     }
 }
