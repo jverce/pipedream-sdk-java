@@ -11,5 +11,6 @@ src/main/java/com/pipedream/api/PipedreamClient.java
 src/main/java/com/pipedream/api/PipedreamClientBuilder.java
 src/main/java/com/pipedream/api/AsyncPipedreamClient.java
 src/main/java/com/pipedream/api/AsyncPipedreamClientBuilder.java
+src/main/java/com/pipedream/api/resources/proxy/*
 src/main/java/com/pipedream/api/resources/workflows/*
 src/main/java/com/pipedream/api/types/HTTPAuthType.java

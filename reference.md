@@ -2289,7 +2289,7 @@ client.projects().retrieveInfo("project_id");
 </details>
 
 ## Proxy
-<details><summary><code>client.proxy.get(projectId, url64) -> Object</code></summary>
+<details><summary><code>client.proxy.get(url, request) -> Object</code></summary>
 <dl>
 <dd>
 
@@ -2303,8 +2303,7 @@ client.projects().retrieveInfo("project_id");
 
 ```java
 client.proxy().get(
-    "project_id",
-    "url_64",
+    "https://api.example.com/endpoint",
     ProxyGetRequest
         .builder()
         .externalUserId("external_user_id")
@@ -2325,15 +2324,7 @@ client.proxy().get(
 <dl>
 <dd>
 
-**projectId:** `String` — The project ID, which starts with 'proj_'.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**url64:** `String` — Base64-encoded target URL
+**url:** `String` — The target URL to proxy the request to
     
 </dd>
 </dl>
@@ -2356,12 +2347,19 @@ client.proxy().get(
 </dd>
 </dl>
 
+#### 📄 Response
+
+The proxy methods intelligently handle responses:
+- **JSON responses**: Automatically parsed and returned as structured objects
+- **Non-JSON responses**: Returned as raw strings (HTML, XML, plain text, etc.)
+- **Empty responses**: Return `null`
+
 
 </dd>
 </dl>
 </details>
 
-<details><summary><code>client.proxy.post(projectId, url64, request) -> Object</code></summary>
+<details><summary><code>client.proxy.post(url, request) -> Object</code></summary>
 <dl>
 <dd>
 
@@ -2375,8 +2373,7 @@ client.proxy().get(
 
 ```java
 client.proxy().post(
-    "project_id",
-    "url_64",
+    "https://api.example.com/endpoint",
     ProxyPostRequest
         .builder()
         .externalUserId("external_user_id")
@@ -2402,15 +2399,7 @@ client.proxy().post(
 <dl>
 <dd>
 
-**projectId:** `String` — The project ID, which starts with 'proj_'.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**url64:** `String` — Base64-encoded target URL
+**url:** `String` — The target URL to proxy the request to
     
 </dd>
 </dl>
@@ -2446,7 +2435,7 @@ client.proxy().post(
 </dl>
 </details>
 
-<details><summary><code>client.proxy.put(projectId, url64, request) -> Object</code></summary>
+<details><summary><code>client.proxy.put(url, request) -> Object</code></summary>
 <dl>
 <dd>
 
@@ -2460,8 +2449,7 @@ client.proxy().post(
 
 ```java
 client.proxy().put(
-    "project_id",
-    "url_64",
+    "https://api.example.com/endpoint",
     ProxyPutRequest
         .builder()
         .externalUserId("external_user_id")
@@ -2487,15 +2475,7 @@ client.proxy().put(
 <dl>
 <dd>
 
-**projectId:** `String` — The project ID, which starts with 'proj_'.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**url64:** `String` — Base64-encoded target URL
+**url:** `String` — The target URL to proxy the request to
     
 </dd>
 </dl>
@@ -2531,7 +2511,7 @@ client.proxy().put(
 </dl>
 </details>
 
-<details><summary><code>client.proxy.delete(projectId, url64) -> Object</code></summary>
+<details><summary><code>client.proxy.delete(url, request) -> Object</code></summary>
 <dl>
 <dd>
 
@@ -2545,8 +2525,7 @@ client.proxy().put(
 
 ```java
 client.proxy().delete(
-    "project_id",
-    "url_64",
+    "https://api.example.com/endpoint",
     ProxyDeleteRequest
         .builder()
         .externalUserId("external_user_id")
@@ -2567,15 +2546,7 @@ client.proxy().delete(
 <dl>
 <dd>
 
-**projectId:** `String` — The project ID, which starts with 'proj_'.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**url64:** `String` — Base64-encoded target URL
+**url:** `String` — The target URL to proxy the request to
     
 </dd>
 </dl>
@@ -2603,7 +2574,7 @@ client.proxy().delete(
 </dl>
 </details>
 
-<details><summary><code>client.proxy.patch(projectId, url64, request) -> Object</code></summary>
+<details><summary><code>client.proxy.patch(url, request) -> Object</code></summary>
 <dl>
 <dd>
 
@@ -2617,8 +2588,7 @@ client.proxy().delete(
 
 ```java
 client.proxy().patch(
-    "project_id",
-    "url_64",
+    "https://api.example.com/endpoint",
     ProxyPatchRequest
         .builder()
         .externalUserId("external_user_id")
@@ -2644,15 +2614,7 @@ client.proxy().patch(
 <dl>
 <dd>
 
-**projectId:** `String` — The project ID, which starts with 'proj_'.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**url64:** `String` — Base64-encoded target URL
+**url:** `String` — The target URL to proxy the request to
     
 </dd>
 </dl>
